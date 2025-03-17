@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* :root {
   --background: #ffffff;
@@ -94,7 +94,6 @@ body {
   /* padding-top: 3rem; */
 }
 
-
 .introText {
   display: flex;
   flex-direction: column;
@@ -103,8 +102,6 @@ body {
   padding-left: clamp(1rem, 8%, 3rem);
   /* background-color: red; */
 }
-
-
 
 .bio {
   background-color: green;
@@ -193,6 +190,17 @@ body {
 
   .introText {
     padding-left: 0;
+    text-align: center;
+  }
+
+  .introTextHeader {
+    font-size: var(--text-4xl);
+    line-height: var(--text-4xl--line-height);
+  }
+
+  .introTextBody {
+    font-size: var(--text-lg);
+    line-height: var(--text-lg--line-height);
   }
 
   .bodyWrapper {

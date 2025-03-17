@@ -12,7 +12,11 @@ export default function Home() {
           <div className='headerProjects ml-[20px]'>Projects</div>
           <div className='headerLM ml-[20px]'>
             <a
-              onClick = {() => {console.log('Hello')}}
+              onClick = {() => {
+                console.log('Hello');
+                document.body.style.backgroundColor = '#f7f7f7';
+                document.body.style.color = 'black';
+              }}
             >
               <Image
                 className='icon'
@@ -51,8 +55,8 @@ export default function Home() {
             />
           </div>
           <div className='introText'>
-            <div className="text-6xl font-semibold">Hello, I&apos;m Kyler!</div>
-            <div className="text-lg mt-[16px]">
+            <div className="introTextHeader text-6xl font-semibold">Hello, I&apos;m Kyler!</div>
+            <div className="introTextBody text-xl mt-[16px]">
               I&apos;m a Software Engineer currently based in Phoenix, AZ and I
               build software to make life easier and more meaningful.
             </div>
