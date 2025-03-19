@@ -9,8 +9,13 @@
   box-sizing: border-box;
 }
 
-:root {
+/* :root {
   --background: rgb(39, 39, 42);
+  --foreground: #f7f7f7;
+} */
+
+:root {
+  --background: rgb(27, 27, 27);
   --foreground: #f7f7f7;
 }
 
@@ -21,13 +26,13 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-} */
-/* :root {
+} 
+ /* :root {
   --background: #0a0a0a;
   --foreground: #ededed;
 } */
@@ -62,6 +67,7 @@ body {
   /* height: clamp(3rem, 3rem, fit-content); */
   min-height: 3rem;
   max-height: auto;
+  z-index: 1;
   /* position: fixed; */
   /* vertical-align: middle; */
 }
@@ -154,10 +160,15 @@ body {
 }
 
 .projectsBox {
-  border: 1px solid rgb(175, 104, 255);
+  border: 1px solid rgb(134, 75, 201);
   padding: 1rem;
   box-sizing: border-box;
+  border-radius: 8px;
   /* background-color: #208f5b; */
+}
+
+.purpleText {
+  color: rgb(134, 75, 201);
 }
 
 .links {
@@ -175,6 +186,54 @@ body {
   /* background-color: rgb(34, 48, 128); */
   width: 100%;
   /* box-sizing: content-box; */
+}
+
+.hoverUp {
+  /* transition: background-color 1.2s; */
+  /* animation: float 0.7s normal;
+  animation-fill-mode: backwards; */
+}
+
+.hoverUp:hover {
+  /* width: 100px;
+  height: 100px; */
+  /* background-color: lightblue; */
+  /* border-radius: 50%; */
+  /* position: relative; */
+  animation: float 0.7s normal;
+  animation-fill-mode: forwards;
+}
+
+@keyframes float {
+  0% {
+      transform: translateY(0);
+  }
+
+  100% {
+      transform: translateY(-4px);
+  }
+
+  /* 100% {
+      transform: translateY(0);
+  } */
+}
+
+.projectTitle {
+  /* font-size: 24; */
+}
+
+.projectLinks {
+  /* background-color: red; */
+  display: flex;
+  /* justify-content:space-between; */
+}
+
+.headerAbout {
+  /* scroll-margin-top: 500px; */
+}
+
+#projects {
+  scroll-margin-top: 80px;
 }
 
 .headerAbout:hover {
@@ -253,10 +312,12 @@ body {
 .skillBox {
   background-color: #f7f7f7;
   border-radius: 5px;
-  padding: 5px 10px 5px 10px;
+  padding: 7px 14px 7px 14px;
   width: fit-content;
-  color: black;
+  /* color: black; */
+  color: rgb(39, 39, 42);
   text-wrap: nowrap;
+  /* font-size: 18px; */
 }
 
 .skillBox:hover {
@@ -355,6 +416,22 @@ body {
   }
 
   .skillSection {
+    justify-content: center;
+  }
+
+  .projectsArea {
+    grid-template-columns: 100%;
+  }
+
+  #about {
+    scroll-margin-top: 50px;
+  }
+
+  /* #top {
+    scroll-margin-top: -100px;
+  } */
+
+  .links {
     justify-content: center;
   }
 }
