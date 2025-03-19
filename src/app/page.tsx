@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className='wrapper ' id='top'>
       <div className='header'>
-        <div
+        <a
           className='headerLeft text-lg font-semibold'
           onClick={() => {
             const element = document.getElementById(`top`);
@@ -16,7 +16,7 @@ export default function Home() {
           }}
         >
           Kyler Chiago
-        </div>
+        </a>
         <div className='headerRight text-base'>
           <div
             className='headerAbout'
@@ -39,7 +39,7 @@ export default function Home() {
           <div className='headerLM ml-[20px]'>
             <a
               onClick={() => {
-                console.log('Hello');
+                // console.log('Hello');
                 document.body.style.backgroundColor = '#f7f7f7';
                 document.body.style.color = 'black';
                 const element = Array.from(
