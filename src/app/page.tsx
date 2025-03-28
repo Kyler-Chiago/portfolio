@@ -11,26 +11,18 @@ export default function Home() {
     if (storedTheme) {
       document.documentElement.setAttribute('data-theme', storedTheme);
       setMode(storedTheme);
-      console.log(`1 mode: ${mode}`);
-      console.log(`1 local theme: ${localStorage.getItem('theme')}`);
     } else if (
       window.matchMedia &&
       window.matchMedia('(prefers-color-scheme: light)').matches
     ) {
       // light mode
       document.documentElement.setAttribute('data-theme', 'light');
-      console.log('Windows light mode');
       setMode('light');
       localStorage.setItem('theme', 'light');
-      console.log(`1_2 mode: ${mode}`);
-      console.log(`1_2 local theme: ${localStorage.getItem('theme')}`);
     } else {
       document.documentElement.setAttribute('data-theme', 'dark');
-      console.log('Windows dark mode');
       setMode('dark');
       localStorage.setItem('theme', 'dark');
-      console.log(`1_3 mode: ${mode}`);
-      console.log(`1_3 local theme: ${localStorage.getItem('theme')}`);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -74,25 +66,13 @@ export default function Home() {
                 ) {
                   document.documentElement.setAttribute('data-theme', 'light');
                   setMode('light');
-                  console.log(
-                    `data-theme: ${document.documentElement.getAttribute(
-                      'data-theme'
-                    )}`
-                  );
                   localStorage.setItem('theme', 'light');
-                  console.log(`local theme: ${localStorage.getItem('theme')}`);
                 } else if (
                   document.documentElement.getAttribute('data-theme') == 'light'
                 ) {
                   document.documentElement.setAttribute('data-theme', 'dark');
                   setMode('dark');
-                  console.log(
-                    `data-theme: ${document.documentElement.getAttribute(
-                      'data-theme'
-                    )}`
-                  );
                   localStorage.setItem('theme', 'dark');
-                  console.log(`local theme: ${localStorage.getItem('theme')}`);
                 }
               }}
             >
