@@ -25,7 +25,7 @@ export default function Home() {
       setMode('dark');
       localStorage.setItem('theme', 'dark');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -147,6 +147,20 @@ export default function Home() {
                       alt='L'
                     />
                   </a>
+                  <a
+                    href={'/Kyler_Chiago-Resume.pdf'}
+                    className='hoverUp ml-[16px]'
+                    download='Kyler_Chiago-Resume.pdf'
+                    title='Download Resume'
+                  >
+                    <Image
+                      className=''
+                      src={'/resumeWhite.png'}
+                      width={32}
+                      height={32}
+                      alt='L'
+                    />
+                  </a>
                 </>
               ) : (
                 <>
@@ -169,6 +183,20 @@ export default function Home() {
                     <Image
                       className=''
                       src={'/LinkedInLogoBlack.png'}
+                      width={32}
+                      height={32}
+                      alt='L'
+                    />
+                  </a>
+                  <a
+                    href={'/Kyler_Chiago-Resume.pdf'}
+                    className='hoverUp ml-[16px]'
+                    download='Kyler_Chiago-Resume.pdf'
+                    title='Download Resume'
+                  >
+                    <Image
+                      className=''
+                      src={'/resumeBlack.png'}
                       width={32}
                       height={32}
                       alt='L'
@@ -273,6 +301,20 @@ export default function Home() {
                     alt='L'
                   />
                 </a>
+                <a
+                  href={'/Kyler_Chiago-Resume.pdf'}
+                  className='hoverUp ml-[16px]'
+                  download='Kyler_Chiago-Resume.pdf'
+                  title='Download Resume'
+                >
+                  <Image
+                    className=''
+                    src={'/resumeWhite.png'}
+                    width={24}
+                    height={24}
+                    alt='L'
+                  />
+                </a>
               </>
             ) : (
               <>
@@ -292,6 +334,20 @@ export default function Home() {
                   <Image
                     className=''
                     src={'/LinkedInLogoBlack.png'}
+                    width={24}
+                    height={24}
+                    alt='L'
+                  />
+                </a>
+                <a
+                  href={'/Kyler_Chiago-Resume.pdf'}
+                  className='hoverUp ml-[16px]'
+                  download='Kyler_Chiago-Resume.pdf'
+                  title='Download Resume'
+                >
+                  <Image
+                    className=''
+                    src={'/resumeBlack.png'}
                     width={24}
                     height={24}
                     alt='L'
