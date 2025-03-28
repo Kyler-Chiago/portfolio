@@ -1,10 +1,5 @@
 @import 'tailwindcss';
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-} */
-
 html {
   scroll-behavior: smooth;
 }
@@ -13,14 +8,34 @@ html {
   box-sizing: border-box;
 }
 
-/* :root {
-  --background: rgb(39, 39, 42);
-  --foreground: #f7f7f7;
-} */
-
 :root {
-  --background: rgb(27, 27, 27);
-  --foreground: #f7f7f7;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --boxColor: #f7f7f7;
+  --boxText: #27272a;
+  --purpleText: #864bc9;
+  --projBack: rgba(18, 18, 18, 1);
+  --skillHoverBox: rgb(42, 181, 116)
+}
+
+[data-theme='dark'] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --boxColor: #f7f7f7;
+  --boxText: #27272a;
+  --purpleText: #864bc9;
+  --projBack: rgba(18, 18, 18, 1);
+  --skillHoverBox: rgb(42, 181, 116)
+}
+
+[data-theme='light'] {
+  --background: #f4f4f4;
+  --foreground: #0a0a0a;
+  --boxColor: #080808;
+  --boxText: #e8e8e8;
+  --purpleText: #9752e6;
+  --projBack: rgb(229, 229, 229);
+  --skillHoverBox: rgb(22, 105, 66);
 }
 
 @theme inline {
@@ -30,29 +45,10 @@ html {
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} 
- /* :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-} */
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.wrapper {
-  /* text-align: center; */
-  /* padding-left: 24px;
-  padding-right: 24px; */
-  /* padding-top: 30px;
-  padding-bottom:  */
 }
 
 .header {
@@ -64,21 +60,15 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* margin-left: 24px; */
   padding-left: 24px;
   padding-right: 24px;
-  /* padding-top: 12px; */
-  /* height: clamp(3rem, 3rem, fit-content); */
   min-height: 3rem;
   max-height: auto;
   z-index: 1;
-  /* position: fixed; */
-  /* vertical-align: middle; */
+  color: #f7f7f7;
 }
 
 .headerLeft {
-  /* align-self: start; */
-  /* justify-self: start; */
   align-items: center;
 }
 
@@ -88,24 +78,14 @@ body {
 }
 
 .headerRight {
-  /* align-self: end; */
-  /* justify-self: end; */
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
   align-items: center;
-  /* justify-content: space-between; */
-  /* padding: 10px; */
 }
 
 .intro {
-  /* background-color: blue; */
   display: grid;
   grid-template-columns: clamp(300px, 50%, 500px) clamp(200px, 50%, 700px);
-  /* justify-content: center; */
-  /* display: flex; */
-  /* margin-top: 3rem; */
-  /* padding-top: 3rem; */
 }
 
 .introText {
@@ -114,11 +94,9 @@ body {
   justify-content: center;
   text-wrap: wrap;
   padding-left: clamp(1rem, 8%, 3rem);
-  /* background-color: red; */
 }
 
 .bio {
-  /* background-color: green; */
   display: flex;
   justify-content: center;
 }
@@ -133,23 +111,19 @@ body {
 }
 
 .projects {
-  /* background-color: orange; */
   display: flex;
   justify-content: center;
 }
 
 .footer {
-  /* background-color: grey; */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .footer2 {
-  /* background-color: grey; */
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
 }
 
 .bodyWrapper {
@@ -159,20 +133,18 @@ body {
   display: grid;
   grid-template-columns: minmax(100px, 1000px);
   justify-content: center;
-  /* align-items: center; */
-  /* position:absolute; */
 }
 
 .projectsBox {
-  border: 1px solid rgb(134, 75, 201);
+  border: 1px solid var(--purpleText);
   padding: 1rem;
   box-sizing: border-box;
   border-radius: 8px;
-  /* background-color: #208f5b; */
+  background-color: var(--projBack);
 }
 
 .purpleText {
-  color: rgb(134, 75, 201);
+  color: var(--purpleText);
 }
 
 .links {
@@ -182,58 +154,30 @@ body {
 
 .bioWrapper {
   display: grid;
-  /* background-color: rgb(68, 62, 62); */
   grid-template-columns: 50% 50%;
 }
 
 .projectsWrapper {
-  /* background-color: rgb(34, 48, 128); */
   width: 100%;
-  /* box-sizing: content-box; */
-}
-
-.hoverUp {
-  /* transition: background-color 1.2s; */
-  /* animation: float 0.7s normal;
-  animation-fill-mode: backwards; */
 }
 
 .hoverUp:hover {
-  /* width: 100px;
-  height: 100px; */
-  /* background-color: lightblue; */
-  /* border-radius: 50%; */
-  /* position: relative; */
   animation: float 0.7s normal;
   animation-fill-mode: forwards;
 }
 
 @keyframes float {
   0% {
-      transform: translateY(0);
+    transform: translateY(0);
   }
 
   100% {
-      transform: translateY(-4px);
+    transform: translateY(-4px);
   }
-
-  /* 100% {
-      transform: translateY(0);
-  } */
-}
-
-.projectTitle {
-  /* font-size: 24; */
 }
 
 .projectLinks {
-  /* background-color: red; */
   display: flex;
-  /* justify-content:space-between; */
-}
-
-.headerAbout {
-  /* scroll-margin-top: 500px; */
 }
 
 #projects {
@@ -253,7 +197,6 @@ body {
 .headerLM {
   display: grid;
   grid-template-columns: 32px;
-  /* justify-content: center; */
   align-items: center;
   column-gap: 14px;
 }
@@ -269,38 +212,16 @@ body {
 }
 
 .projectsArea {
-  /* display: flex; */
-  /* flex: calc(100%/3) 1 1; */
-  /* flex: 2 1 1 1 1; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 10px;
   row-gap: 10px;
-  /* margin: 10px; */
   width: 100%;
-  /* box-sizing: content-box; */
 }
 
 .pfp {
   border-radius: 45%;
-  /* justify-self: center; */
 }
-
-.pfpDiv {
-  /* justify-content: left; */
-  /* align-items: left; */
-  /* background-color: red; */
-  /* width: 100%; */
-}
-
-/* @keyframes smoothbounceball {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(0, 1000px, 0);
-  }
-} */
 
 .ball {
   animation: bounce 1s;
@@ -314,18 +235,16 @@ body {
 }
 
 .skillBox {
-  background-color: #f7f7f7;
+  background-color: var(--boxColor);
   border-radius: 5px;
   padding: 7px 14px 7px 14px;
   width: fit-content;
-  /* color: black; */
-  color: rgb(39, 39, 42);
+  color: var(--boxText);
   text-wrap: nowrap;
-  /* font-size: 18px; */
 }
 
 .skillBox:hover {
-  background-color: #2ab574;
+  background-color: var(--skillHoverBox);
   -webkit-transition: background-color 400ms linear;
   -ms-transition: background-color 400ms linear;
   transition: background-color 400ms linear;
@@ -372,7 +291,6 @@ body {
     padding-left: clamp(4px, 10%, 40px);
     padding-right: clamp(4px, 10%, 40px);
     margin-top: 3rem;
-    /* position:absolute; */
   }
 
   .header {
@@ -430,10 +348,6 @@ body {
   #about {
     scroll-margin-top: 50px;
   }
-
-  /* #top {
-    scroll-margin-top: -100px;
-  } */
 
   .links {
     justify-content: center;

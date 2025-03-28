@@ -2,8 +2,39 @@
 import Image from 'next/image';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [mode, setMode] = useState('');
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      document.documentElement.setAttribute('data-theme', storedTheme);
+      setMode(storedTheme);
+      console.log(`1 mode: ${mode}`);
+      console.log(`1 local theme: ${localStorage.getItem('theme')}`);
+    } else if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: light)').matches
+    ) {
+      // light mode
+      document.documentElement.setAttribute('data-theme', 'light');
+      console.log('Windows light mode');
+      setMode('light');
+      localStorage.setItem('theme', 'light');
+      console.log(`1_2 mode: ${mode}`);
+      console.log(`1_2 local theme: ${localStorage.getItem('theme')}`);
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      console.log('Windows dark mode');
+      setMode('dark');
+      localStorage.setItem('theme', 'dark');
+      console.log(`1_3 mode: ${mode}`);
+      console.log(`1_3 local theme: ${localStorage.getItem('theme')}`);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className='wrapper ' id='top'>
       <div className='header'>
@@ -12,7 +43,6 @@ export default function Home() {
           onClick={() => {
             const element = document.getElementById(`top`);
             element?.scrollIntoView({ behavior: 'smooth' });
-            // window.scrollTo(0,0);
           }}
         >
           Kyler Chiago
@@ -39,24 +69,50 @@ export default function Home() {
           <div className='headerLM ml-[20px]'>
             <a
               onClick={() => {
-                // console.log('Hello');
-                document.body.style.backgroundColor = '#f7f7f7';
-                document.body.style.color = 'black';
-                const element = Array.from(
-                  document.getElementsByClassName(
-                    'header'
-                  ) as HTMLCollectionOf<HTMLElement>
-                );
-                element[0].style.backgroundColor = '#dfdfdf';
+                if (
+                  document.documentElement.getAttribute('data-theme') == 'dark'
+                ) {
+                  document.documentElement.setAttribute('data-theme', 'light');
+                  setMode('light');
+                  console.log(
+                    `data-theme: ${document.documentElement.getAttribute(
+                      'data-theme'
+                    )}`
+                  );
+                  localStorage.setItem('theme', 'light');
+                  console.log(`local theme: ${localStorage.getItem('theme')}`);
+                } else if (
+                  document.documentElement.getAttribute('data-theme') == 'light'
+                ) {
+                  document.documentElement.setAttribute('data-theme', 'dark');
+                  setMode('dark');
+                  console.log(
+                    `data-theme: ${document.documentElement.getAttribute(
+                      'data-theme'
+                    )}`
+                  );
+                  localStorage.setItem('theme', 'dark');
+                  console.log(`local theme: ${localStorage.getItem('theme')}`);
+                }
               }}
             >
-              <Image
-                className='icon'
-                src={'/lightModeButton_final.png'}
-                width={32}
-                height={32}
-                alt='G'
-              />
+              {mode == 'dark' ? (
+                <Image
+                  className='icon'
+                  src={'/lightModeButton_final.png'}
+                  width={32}
+                  height={32}
+                  alt='G'
+                />
+              ) : (
+                <Image
+                  className='icon'
+                  src={'/darkModeButton_final.png'}
+                  width={32}
+                  height={32}
+                  alt='G'
+                />
+              )}
             </a>
           </div>
         </div>
@@ -84,40 +140,86 @@ export default function Home() {
               easier and make a meaningful impact in people&apos;s lives.
             </div>
             <div className='links mt-[16px]'>
-              <a href={'https://github.com/Kyler-Chiago'} className='hoverUp'>
-                <Image
-                  className=''
-                  src={'/GithubLogo.png'}
-                  width={32}
-                  height={32}
-                  alt='G'
-                />
-              </a>
-              <a
-                href={'https://www.linkedin.com/in/kyler-chiago/'}
-                className='hoverUp ml-[16px]'
-              >
-                <Image
-                  className=''
-                  src={'/LinkedInLogo.png'}
-                  width={32}
-                  height={32}
-                  alt='L'
-                />
-              </a>
+              {mode == 'dark' ? (
+                <>
+                  <a
+                    href={'https://github.com/Kyler-Chiago'}
+                    className='hoverUp'
+                  >
+                    <Image
+                      className=''
+                      src={'/GithubLogo.png'}
+                      width={32}
+                      height={32}
+                      alt='G'
+                    />
+                  </a>
+                  <a
+                    href={'https://www.linkedin.com/in/kyler-chiago/'}
+                    className='hoverUp ml-[16px]'
+                  >
+                    <Image
+                      className=''
+                      src={'/LinkedInLogo.png'}
+                      width={32}
+                      height={32}
+                      alt='L'
+                    />
+                  </a>
+                </>
+              ) : (
+                <>
+                  <a
+                    href={'https://github.com/Kyler-Chiago'}
+                    className='hoverUp'
+                  >
+                    <Image
+                      className=''
+                      src={'/GithubLogoBlack.png'}
+                      width={32}
+                      height={32}
+                      alt='G'
+                    />
+                  </a>
+                  <a
+                    href={'https://www.linkedin.com/in/kyler-chiago/'}
+                    className='hoverUp ml-[16px]'
+                  >
+                    <Image
+                      className=''
+                      src={'/LinkedInLogoBlack.png'}
+                      width={32}
+                      height={32}
+                      alt='L'
+                    />
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>
         <div className='arrowDownDiv mt-[5rem]' id='about'>
-          <a className='ball'>
-            <Image
-              className=''
-              src={'/arrowDownWhite.png'}
-              width={48}
-              height={48}
-              alt='L'
-            />
-          </a>
+          {mode == 'dark' ? (
+            <a className='ball'>
+              <Image
+                className=''
+                src={'/arrowDownWhite.png'}
+                width={48}
+                height={48}
+                alt='L'
+              />
+            </a>
+          ) : (
+            <a className='ball'>
+              <Image
+                className=''
+                src={'/arrowDownBlack.png'}
+                width={48}
+                height={48}
+                alt='L'
+              />
+            </a>
+          )}
         </div>
         <div className='bio mt-[3rem] text-4xl font-semibold'>About Me</div>
         <div className='oval mt-[1rem]'></div>
@@ -161,33 +263,61 @@ export default function Home() {
         </div>
         <div className='oval mt-[1rem]'></div>
         <div className='projectsWrapper mt-[1rem]'>
-          <Projects />
+          <Projects mode={mode} />
         </div>
         <div className='dashBorder'></div>
         <div className='footer mb-[1rem]'>
           <div>@ 2025 Kyler Chiago</div>
           <div className='footer2'>
-            <a href={'https://github.com/Kyler-Chiago'} className='hoverUp'>
-              <Image
-                className=''
-                src={'/GithubLogo.png'}
-                width={24}
-                height={24}
-                alt='G'
-              />
-            </a>
-            <a
-              href={'https://www.linkedin.com/in/kyler-chiago/'}
-              className='ml-[16px] hoverUp'
-            >
-              <Image
-                className=''
-                src={'/LinkedInLogo.png'}
-                width={24}
-                height={24}
-                alt='L'
-              />
-            </a>
+            {mode == 'dark' ? (
+              <>
+                <a href={'https://github.com/Kyler-Chiago'} className='hoverUp'>
+                  <Image
+                    className=''
+                    src={'/GithubLogo.png'}
+                    width={24}
+                    height={24}
+                    alt='G'
+                  />
+                </a>
+                <a
+                  href={'https://www.linkedin.com/in/kyler-chiago/'}
+                  className='hoverUp ml-[16px]'
+                >
+                  <Image
+                    className=''
+                    src={'/LinkedInLogo.png'}
+                    width={24}
+                    height={24}
+                    alt='L'
+                  />
+                </a>
+              </>
+            ) : (
+              <>
+                <a href={'https://github.com/Kyler-Chiago'} className='hoverUp'>
+                  <Image
+                    className=''
+                    src={'/GithubLogoBlack.png'}
+                    width={24}
+                    height={24}
+                    alt='G'
+                  />
+                </a>
+                <a
+                  href={'https://www.linkedin.com/in/kyler-chiago/'}
+                  className='hoverUp ml-[16px]'
+                >
+                  <Image
+                    className=''
+                    src={'/LinkedInLogoBlack.png'}
+                    width={24}
+                    height={24}
+                    alt='L'
+                  />
+                </a>
+              </>
+            )}
           </div>
         </div>
       </div>

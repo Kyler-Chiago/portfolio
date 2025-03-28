@@ -1,11 +1,15 @@
 import ProjectsBox from './ProjectsBox';
 
-const Projects = () => {
+interface Project {
+  mode: string;
+}
+
+const Projects: React.FC<Project> = ({ mode }) => {
   const projects = [
     {
       name: 'MLflow.js',
       description:
-        'MLflow.js a library available as an npm package, built to make using the MLflow REST API easier. Using object-oriented programming principles, to make the code cleaner, more structured and maintainable. Built to make using Machine Learning applications easier using JavaScript, the user can call on the methods to use the MLflow REST API.',
+        'MLflow.js a library available as an npm package, built using TypeScript to make using the MLflow REST API easier. Using object-oriented programming principles, to make the code cleaner, more structured and maintainable. Built to make using Machine Learning applications easier using JavaScript, the user can call on the methods to use the MLflow REST API.',
       github: 'https://github.com/oslabs-beta/mlflow-js',
       website: 'https://mlflow-js.org/',
     },
@@ -21,7 +25,7 @@ const Projects = () => {
   return (
     <div className='projectsArea'>
       {projects.map((project, index) => (
-        <ProjectsBox key={index} project={project} />
+        <ProjectsBox key={index} project={project} mode={mode} />
       ))}
     </div>
   );
