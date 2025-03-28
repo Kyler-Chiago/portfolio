@@ -5,6 +5,7 @@ import Projects from './components/Projects';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
+  // state for the theme
   const [mode, setMode] = useState('');
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
