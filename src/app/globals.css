@@ -180,8 +180,12 @@ body {
   display: flex;
 }
 
+#about {
+  scroll-margin-top: 0px;
+}
+
 #projects {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 40px;
 }
 
 .headerAbout:hover {
@@ -303,8 +307,14 @@ body {
   }
 
   .headerRight {
-    flex-direction: column;
-    text-align: center;
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
+    /* text-align: center; */
+    /* align-items:self-end; */
+    /* justify-content: space-around; */
+    /* flex: auto; */
+    gap: 1rem;
+    /* margin-top: 8px; */
   }
 
   .headerProjects {
@@ -346,7 +356,11 @@ body {
   }
 
   #about {
-    scroll-margin-top: 50px;
+    scroll-margin-top: 10px;
+  }
+  
+  #projects {
+    scroll-margin-top: 40px;
   }
 
   .links {
