@@ -20,6 +20,13 @@ const Projects: React.FC<Project> = ({ mode }) => {
       github: 'https://github.com/Cat-Snake-PTRI15/AoE',
       website: '',
     },
+    {
+      name: 'D&D 5E Character Generator',
+      description:
+        'The D&D 5E Character Generator is a quick way to generate ideas for characters or non-player characters for the popular tabletop rpg Dungeons & Dragons 5th Edition. It provides a simple idea for the character including species, gender, class, personality traits, ability score array and more.',
+      github: 'https://github.com/Kyler-Chiago/dndCharGen',
+      website: '',
+    },
   ];
 
   return (
